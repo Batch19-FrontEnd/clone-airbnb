@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
+import Registro from './components/Registro/Registro';
+import Login from './components/login/Login';
 
 class App extends Component {
   render() {
@@ -10,7 +12,7 @@ class App extends Component {
         <Nvar />
         <div className="container">
           <div className="p-5">
-            <Inicio />
+            <Inicio/>
           </div>
         </div>
       </div>
