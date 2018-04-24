@@ -62,33 +62,37 @@ class Registro extends Component {
 
     render() {
         return (
-            <div className="registro col-12">
-                <div className="row formularioRegistro">
+            <Col md={12}>
+                <div className="registro">
                     <Col md={12}>
-                        <Form onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" value={this.state.email} onChange={this.handleChange} required />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="text" name="first_name" id="first_name" placeholder="Nombres" value={this.state.first_name} onChange={this.handleChange} required />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="text" name="lastname" id="lastname" placeholder="Apellidos" value={this.state.lastname} onChange={this.handleChange} required />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="password" name="password" id="password" placeholder="Crea una contraseña" value={this.state.password} onChange={this.handleChange} required invalid />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="password" name="confirmacionPassword" id="confirmacionPassword" placeholder="Vuelve a escribir tu contraseña" value={this.state.confirmacionPassword} onChange={this.handleChange} required />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required />
-                            </FormGroup>
-                            <Button color="danger" type="submit">Regístrate</Button>
-                        </Form>
+                        <div className="row formularioRegistro">
+
+                            <Form onSubmit={this.handleSubmit}>
+                                <FormGroup>
+                                    <Input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" value={this.state.email} onChange={this.handleChange} required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="text" name="first_name" id="first_name" placeholder="Nombres" value={this.state.first_name} onChange={this.handleChange} required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="text" name="lastname" id="lastname" placeholder="Apellidos" value={this.state.lastname} onChange={this.handleChange} required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" name="password" id="password" placeholder="Crea una contraseña" value={this.state.password} onChange={this.handleChange} required invalid />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="password" name="confirmacionPassword" id="confirmacionPassword" placeholder="Vuelve a escribir tu contraseña" value={this.state.confirmacionPassword} onChange={this.handleChange} required />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required />
+                                </FormGroup>
+                                <Button color="danger" type="submit">Regístrate</Button>
+                            </Form>
+
+                        </div>
                     </Col>
-                </div>               
-            </div>
+                </div>
+            </Col>
 
 
         )
@@ -99,7 +103,7 @@ class Registro extends Component {
 
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/signup', objeto)
             .then(Response => console.log(Response))
-            .catch(Error => console.log(Response));
+            .catch(Error => console.log(Error));
 
     }
 
