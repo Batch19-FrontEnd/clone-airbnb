@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { connect } from 'react-redux';
-import { Control } from 'react-redux-form';
 import Axios from 'axios';
 
 
