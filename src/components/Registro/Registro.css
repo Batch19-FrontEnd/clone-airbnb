@@ -1,9 +1,4 @@
 .registro{
-    z-index: 100;
-	position: absolute!important;
-	background-color: rgba(0, 0, 0, 0.7);
-	top: 0;
-	left: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -11,8 +6,8 @@
 
 .formularioRegistro{
     background-color: white;
-    margin: 50px;
-    padding: 30px;
+    margin: 20px;
+    padding: 20px;
 }
 
 .form-group{
