@@ -1,6 +1,6 @@
 .registro{
     z-index: 100;
-	position: absolute;
+	position: absolute!important;
 	background-color: rgba(0, 0, 0, 0.7);
 	top: 0;
 	left: 0;
@@ -13,4 +13,13 @@
     background-color: white;
     margin: 50px;
     padding: 30px;
+}
+
+.form-group{
+	margin-bottom: 10px!important;
+}
+
+input{
+	font-size: 12px!important;
+	padding: 5px!important;
 }

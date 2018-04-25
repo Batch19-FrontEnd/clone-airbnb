@@ -62,12 +62,10 @@ class Registro extends Component {
 
     render() {
         return (
-            <Col md={12}>
-                <div className="registro">
-                    <Col md={12}>
+                <div className="registro col-12">
+                    <Col md={5}>
                         <div className="row formularioRegistro">
-
-                            <Form onSubmit={this.handleSubmit}>
+                            <Form onSubmit={this.handleSubmit} className="col-12">
                                 <FormGroup>
                                     <Input type="email" name="email" id="email" placeholder="Dirección de correo electrónico" value={this.state.email} onChange={this.handleChange} required />
                                 </FormGroup>
@@ -78,13 +76,13 @@ class Registro extends Component {
                                     <Input type="text" name="lastname" id="lastname" placeholder="Apellidos" value={this.state.lastname} onChange={this.handleChange} required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input type="password" name="password" id="password" placeholder="Crea una contraseña" value={this.state.password} onChange={this.handleChange} required invalid />
+                                    <Input type="password" name="password" id="password" placeholder="Crea una contraseña" value={this.state.password} onChange={this.handleChange} required invalid minLength="10"/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Input type="password" name="confirmacionPassword" id="confirmacionPassword" placeholder="Vuelve a escribir tu contraseña" value={this.state.confirmacionPassword} onChange={this.handleChange} required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required />
+                                    <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required maxLength="10" minLength="10"/>
                                 </FormGroup>
                                 <Button color="danger" type="submit">Regístrate</Button>
                             </Form>
@@ -92,7 +90,6 @@ class Registro extends Component {
                         </div>
                     </Col>
                 </div>
-            </Col>
 
 
         )
