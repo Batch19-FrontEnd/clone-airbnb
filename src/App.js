@@ -14,6 +14,8 @@ class App extends Component {
           <div className="p-5">
             <Inicio/>
           </div>
+          <Registro/>
+          <Login/>
         </div>
       </div>
     );
