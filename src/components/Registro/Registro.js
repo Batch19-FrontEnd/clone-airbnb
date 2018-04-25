@@ -99,7 +99,10 @@ class Registro extends Component {
         console.log("registrando", objeto)
 
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/signup', objeto)
-            .then(Response => console.log(Response))
+            .then(Response => {
+                console.log(Response);
+                window.location.reload()
+            })
             .catch(Error => console.log(Error));
 
     }
