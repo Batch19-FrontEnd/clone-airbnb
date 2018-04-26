@@ -42,15 +42,34 @@ class Profile extends Component{
       //Si el componente padre pasa props despues de renderear
   }
 
-  onProfileChange(value){
-    
-    let primerNombre = Object.assign({}, this.state.user);
-    primerNombre.first_name = value
-    console.log("primer nombre es");
-    console.log(primerNombre);
+  onNameChange(value){
     this.setState({
       user: {
         first_name: value
+      }
+    });
+  }
+
+  onLastNameChange(value){
+    this.setState({
+      user: {
+        lastname: value
+      }
+    });
+  }
+
+  onEmailChange(value){
+    this.setState({
+      user: {
+        email: value
+      }
+    });
+  }
+
+  onPhoneChange(value){
+    this.setState({
+      user: {
+        phone_number: value
       }
     });
   }
@@ -72,34 +91,29 @@ class Profile extends Component{
                                 <FormGroup row>
                                   <Label for="name" sm={2}>Nombre</Label>
                                   <Col sm={10}>
-                                    <Input type="text" name="name" id="name" placeholder="Nombre" value={this.state.user.first_name} onChange={e => this.onProfileChange(e.target.value)} />
+                                    <Input type="text" name="name" id="name" placeholder="Nombre" value={this.state.user.first_name} onChange={e => this.onNameChange(e.target.value)} />
                                   </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                   <Label for="lastname" sm={2}>Apellido</Label>
                                   <Col sm={10}>
-                                    <Input type="text" name="lastname" id="lastname" placeholder="Apellido" value={this.state.user.lastname} />
+                                    <Input type="text" name="lastname" id="lastname" placeholder="Apellido" value={this.state.user.lastname} onChange={e => this.onLastNameChange(e.target.value)} />
                                   </Col>
                                 </FormGroup>
                                 <FormGroup row>
                                   <Label for="exampleEmail" sm={2}>Correo electrónico</Label>
                                   <Col sm={10}>
-                                    <Input type="email" name="email" id="exampleEmail" placeholder="Correo electrónico" value={this.state.user.email} />
+                                    <Input type="email" name="email" id="exampleEmail" placeholder="Correo electrónico" value={this.state.user.email} onChange={e => this.onEmailChange(e.target.value)} />
                                   </Col>
                                 </FormGroup>
                                 
                                 <FormGroup row>
                                   <Label for="telephone" sm={2}>Teléfono</Label>
                                   <Col sm={10}>
-                                    <Input type="text" name="telephone" id="telephone" placeholder="Teléfono" value={this.state.user.phone_number} />
+                                    <Input type="text" name="telephone" id="telephone" placeholder="Teléfono" value={this.state.user.phone_number} onChange={e => this.onPhoneChange(e.target.value)} />
                                   </Col>
                                 </FormGroup>
-                                <FormGroup row>
-                                  <Label for="description" sm={2}>Descripción</Label>
-                                  <Col sm={10}>
-                                    <Input type="text" name="description" id="description" placeholder="Descripción" value={this.state.user.description} />
-                                  </Col>
-                                </FormGroup>
+                                
                                 <FormGroup check row>
                                   <Col sm={{ size: 2, offset: 10 }}>
                                     <Button>Submit</Button>
