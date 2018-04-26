@@ -4,6 +4,8 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
+import GetPropLanding from './components/propiedadesLanding/GetPropLanding';
+
 
 class App extends Component {
   render() {
@@ -14,8 +16,7 @@ class App extends Component {
           <div className="p-5">
             <Inicio/>
           </div>
-          <Registro/>
-          <Login/>
+          <GetPropLanding/>
         </div>
       </div>
     );
