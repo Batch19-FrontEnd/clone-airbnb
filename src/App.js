@@ -5,6 +5,8 @@ import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
 import GetPropLanding from './components/propiedadesLanding/GetPropLanding';
+import Evaluacion from './components/evaluacion/evaluacion';
+
 
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
             <Inicio/>
           </div>
           <GetPropLanding/>
+          <Evaluacion/>
         </div>
       </div>
     );
