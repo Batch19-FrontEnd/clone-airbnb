@@ -8,15 +8,16 @@ class PropiedadesLanding extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: props.nombre,
-            pais: props.pais,
-            ciudad:props.ciudad,
-            foto: props.foto,
-            precio: props.precio,
-            rating: props.rating
+            name: props.nombre === null ? "Nombre no disponible" : props.nombre,
+            pais: props.pais === null ? "Pais no disponible" : props.pais,
+            ciudad:props.ciudad === null ? "Ciudad no disponible" : props.ciudad,
+            foto: props.foto === null ? "http://zazsupercentro.com/wp-content/uploads/2017/07/imagen-no-disponible.png" : props.foto,
+            precio: props.precio === null ? "Precio no disponible" : props.precio,
+            rating: props.rating === null ? 0 : props.rating
         };
 
     }
+
 
     render() {
         return (
