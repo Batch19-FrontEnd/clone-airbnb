@@ -4,22 +4,18 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
-import GetPropLanding from './components/propiedadesLanding/GetPropLanding';
-import Evaluacion from './components/evaluacion/evaluacion';
-
-
+import Propiedades from './components/Anfitrion/Propiedades/Propiedades'
 
 class App extends Component {
   render() {
     return (
       <div className="App Seccion">
-        <Nvar />
+        {/*<Nvar />*/}
         <div className="container">
           <div className="p-5">
             <Inicio/>
           </div>
-          <GetPropLanding/>
-          <Evaluacion/>
+          <Propiedades/>
         </div>
       </div>
     );
