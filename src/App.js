@@ -4,7 +4,7 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
-
+import CreateProperty from './components/CreateProperty/CreateProperty';
 class App extends Component {
   render() {
     return (
@@ -14,7 +14,6 @@ class App extends Component {
           <div className="p-5">
             <Inicio/>
           </div>
-          <Login/>
         </div>
       </div>
     );
