@@ -4,6 +4,7 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
+import Propiedades from './components/Anfitrion/Propiedades/Propiedades'
 import Profile from './components/Profile/Profile';
 
 class App extends Component {

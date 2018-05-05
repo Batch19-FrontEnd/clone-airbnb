@@ -56,7 +56,7 @@ class Inicio extends Component {
                         <Col></Col>
                     </Row>
                 </Jumbotron>
-                <img className="img img-responsive" alt="LOGO" width="200px" height="100px" src="logo.png" />
+                {/*<img className="img img-responsive" alt="LOGO" width="200px" height="100px" src="logo.png" />*/}
                 <img className="img img-responsive" alt="LOGO" width="200px" height="100px" src="http://www.resetmx.reviews/wp-content/uploads/2017/09/default.png" />
             </div>
         );

@@ -1,0 +1,11 @@
+.tituloCiudad{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.tituloCiudad CardSubtitle{
+    margin: 0 5px;
+}
