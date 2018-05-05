@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import './Estilos.css';
-import { Jumbotron, Button, Row, Col, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { Jumbotron, Button, Row, Col, Input, InputGroup, InputGroupAddon, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Registro from '../../components/Registro/Registro';
 
 class Inicio extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            saludito: "Esta sera la pagina inicial"
+            modalRegistro: false
         };
+
+        this.toggle = this.toggle.bind(this);
     }
 
+    toggle() {
+        this.setState({
+            modalRegistro: !this.state.modalRegistro
+        });
+    }
 
     componentWillMount() {
         //Aqui se hacen peticiones a una API
@@ -41,7 +49,10 @@ class Inicio extends Component {
                     <Row>
                         <Col></Col>
                         <Col><Button href="Login" color="success">Acceder</Button></Col>
-                        <Col><Button href="Registro" color="primary">Registrarse</Button></Col>
+                        <Col><Button onClick={this.toggle} color="primary">Registrarse</Button></Col>
+                        <Modal isOpen={this.state.modalRegistro} toggle={this.toggle} className={this.props.className}>
+                            <Registro/>
+                        </Modal>
                         <Col></Col>
                     </Row>
                 </Jumbotron>

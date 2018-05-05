@@ -62,8 +62,8 @@ class Registro extends Component {
 
     render() {
         return (
-                <div className="registro col-12">
-                    <Col md={5}>
+                <div className="registro">
+                    <Col md={10}>
                         <div className="row formularioRegistro">
                             <Form onSubmit={this.handleSubmit} className="col-12">
                                 <FormGroup>
@@ -84,7 +84,7 @@ class Registro extends Component {
                                 <FormGroup>
                                     <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required maxLength="10" minLength="10"/>
                                 </FormGroup>
-                                <Button color="danger" type="submit">Regístrate</Button>
+                                <Button color="danger" type="submit" className="col-12" >Regístrate</Button>
                             </Form>
 
                         </div>
@@ -99,7 +99,10 @@ class Registro extends Component {
         console.log("registrando", objeto)
 
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/signup', objeto)
-            .then(Response => console.log(Response))
+            .then(Response => {
+                console.log(Response);
+                window.location.reload()
+            })
             .catch(Error => console.log(Error));
 
     }
