@@ -29,7 +29,7 @@ class CreateProperty extends Component {
             tv: false,
             bathrooms: '',
             beds: '',
-            
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -97,8 +97,8 @@ class CreateProperty extends Component {
                 "bathrooms": bathrooms,
                 "beds": beds,
             }
-           
-          
+
+
         }
         this.registrarCliente(objeto)
 
@@ -190,21 +190,21 @@ class CreateProperty extends Component {
                             <FormGroup check>
                                 <Label check>
                                     <Input type="checkbox" name="tv" id="tv" checked={this.state.tv} onChange={this.handleChange} />
-                                    Refrigerador
+                                    TV
                 </Label>
                             </FormGroup>
 
-                            
+
                             <FormGroup>
                                 <Input type="number" name="bathrooms" id="bathrooms" placeholder="Baños" value={this.state.bathrooms} onChange={this.handleChange} required />
                             </FormGroup>
 
-                              
+
                             <FormGroup>
                                 <Input type="number" name="beds" id="beds" placeholder="Camas" value={this.state.beds} onChange={this.handleChange} required />
                             </FormGroup>
 
-                          
+
 
                             <Button color="danger" type="submit" className="col-12" >Crear</Button>
                         </Form>
@@ -222,12 +222,17 @@ class CreateProperty extends Component {
     registrarCliente(objeto) {
         console.log("registrando", objeto)
 
-        // Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/signup', objeto)
-        //     .then(Response => {
-        //         console.log(Response);
-        //         window.location.reload()
-        //     })
-        //     .catch(Error => console.log(Error));
+       
+            const config = {
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            }
+            console.log(config);
+
+        Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/estates', objeto, config)
+            .then(Response => {
+                console.log('Response:', Response);
+            })
+            .catch(Error => console.log(Error));
 
     }
 
