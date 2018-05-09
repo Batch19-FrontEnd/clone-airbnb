@@ -4,6 +4,7 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
+import GetReservUsuario from './components/reservacionesXusuario/getReservUsuario';
 import GetPropLanding from './components/propiedadesLanding/GetPropLanding';
 import Evaluacion from './components/evaluacion/evaluacion';
 import CreateProperty from './components/CreateProperty/CreateProperty';
@@ -50,6 +51,9 @@ class App extends Component {
               <Reservation/>
               <Profile/>
           </div>
+          <Registro/>
+          <Login/>
+          <GetReservUsuario/>
           <GetPropLanding/>
           <Evaluacion/>
         </div>
