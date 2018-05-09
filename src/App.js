@@ -5,6 +5,7 @@ import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
 import Profile from './components/Profile/Profile';
+import Reservation from './components/Reservation/Reservation';
 
 class App extends Component {
   static contextTypes = {
@@ -43,7 +44,7 @@ class App extends Component {
           <div className="container">
             <div className="p-5">
             </div>
-            
+              <Reservation/>
               <Profile/>
           </div>
           <Login/>
