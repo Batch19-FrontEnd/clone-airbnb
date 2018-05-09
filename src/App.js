@@ -4,6 +4,9 @@ import Inicio from './components/Landing Page/Inicio';
 import Nvar from './components/Nvar/Nvar';
 import Registro from './components/Registro/Registro';
 import Login from './components/login/Login';
+import GetReservUsuario from './components/reservacionesXusuario/getReservUsuario';
+
+
 
 class App extends Component {
   render() {
@@ -16,6 +19,7 @@ class App extends Component {
           </div>
           <Registro/>
           <Login/>
+          <GetReservUsuario/>
         </div>
       </div>
     );
