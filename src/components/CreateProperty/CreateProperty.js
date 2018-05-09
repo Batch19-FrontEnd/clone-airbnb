@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Form, FormGroup, Label, Input, FormFeedback, FormText, Col, Button } from 'reactstrap';
 import './createProperty.css';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 // Importacion para traer el componente raiz de react
 
@@ -29,6 +30,7 @@ class CreateProperty extends Component {
             tv: false,
             bathrooms: '',
             beds: '',
+            address: ''
 
         };
 
@@ -37,14 +39,44 @@ class CreateProperty extends Component {
     }
 
 
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+    handleChangAddress = (address) => {
+        this.setState({ address })
+    }
 
-        this.setState({
-            [name]: value
-        });
+    handleSelectAddress = (address) => {
+        console.log('address: ', address);
+        geocodeByAddress(address)
+            .then(results => {
+                console.log('results: ', results);
+
+                let result = {
+                    isgPlaces: true,
+                    results: results
+                }
+                this.handleChange(result);
+
+
+                getLatLng(results[0]).then(latLng => {
+                    console.log('Success', latLng)
+
+                });
+            })
+            .catch(error => console.error('Error', error))
+    }
+
+    handleChange(event) {
+        if (event.isgPlaces) {
+            console.log('is places')
+        } else {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+
+            this.setState({
+                [name]: value
+            });
+        }
+
     }
 
 
@@ -76,8 +108,6 @@ class CreateProperty extends Component {
             "estate_name": estate_name,
             "description": description,
             "price": price,
-            "price": price,
-
             "address": {
                 "num_ext": num_ext,
                 "colonia": colonia,
@@ -88,6 +118,7 @@ class CreateProperty extends Component {
                 "lat": lat,
                 "long": long,
                 "ref": ref,
+                "calle": calle
             },
             "services": {
                 "wifi": wifi,
@@ -109,6 +140,7 @@ class CreateProperty extends Component {
             <div className="CreateProperty">
                 <h1>Crear propiedad</h1>
                 <Col md={10}>
+
                     <div className="row formularioCreateProperty">
                         <Form onSubmit={this.handleSubmit} className="col-12">
                             <FormGroup>
@@ -121,6 +153,39 @@ class CreateProperty extends Component {
 
                             <FormGroup>
                                 <Input type="text" name="price" id="price" placeholder="Precio" value={this.state.price} onChange={this.handleChange} required />
+                            </FormGroup>
+
+                            <FormGroup>
+                                <PlacesAutocomplete
+                                    value={this.state.address}
+                                    onChange={this.handleChangAddress}
+                                    onSelect={this.handleSelectAddress}
+                                >
+                                    {({ getInputProps, suggestions, getSuggestionItemProps }) => (
+                                        <div>
+                                            <input
+                                                {...getInputProps({
+                                                    placeholder: 'Search Places ...',
+                                                    className: 'location-search-input'
+                                                })}
+                                            />
+                                            <div className="autocomplete-dropdown-container">
+                                                {suggestions.map(suggestion => {
+                                                    const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+                                                    // inline style for demonstration purpose
+                                                    const style = suggestion.active
+                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                    return (
+                                                        <div {...getSuggestionItemProps(suggestion, { className, style })}>
+                                                            <span>{suggestion.description}</span>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+                                </PlacesAutocomplete>
                             </FormGroup>
 
                             <FormGroup>
@@ -222,11 +287,11 @@ class CreateProperty extends Component {
     registrarCliente(objeto) {
         console.log("registrando", objeto)
 
-       
-            const config = {
-                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-            }
-            console.log(config);
+
+        const config = {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        }
+        console.log(config);
 
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/estates', objeto, config)
             .then(Response => {
