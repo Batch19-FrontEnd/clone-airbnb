@@ -30,7 +30,9 @@ class CreateProperty extends Component {
             tv: false,
             bathrooms: '',
             beds: '',
-            address: ''
+            address: '',
+            lat: '',
+            lng:''
 
         };
 
@@ -44,38 +46,70 @@ class CreateProperty extends Component {
     }
 
     handleSelectAddress = (address) => {
-        console.log('address: ', address);
         geocodeByAddress(address)
             .then(results => {
-                console.log('results: ', results);
-
-                let result = {
-                    isgPlaces: true,
-                    results: results
-                }
-                this.handleChange(result);
-
-
+                let result = results[0].address_components;
+                this.setAddress(result)
                 getLatLng(results[0]).then(latLng => {
-                    console.log('Success', latLng)
-
+                    console.log('latLng: ', latLng);
+                    this.state.lat = latLng.lat;
+                    this.state.lng = latLng.lng;
                 });
             })
             .catch(error => console.error('Error', error))
     }
 
-    handleChange(event) {
-        if (event.isgPlaces) {
-            console.log('is places')
-        } else {
-            const target = event.target;
-            const value = target.type === 'checkbox' ? target.checked : target.value;
-            const name = target.name;
+    setAddress(address) {
 
-            this.setState({
-                [name]: value
-            });
+        let dataClean = [];
+        for (let i in address) {
+            for (let type in address[i]) {
+                dataClean.push({ type: address[i].types[0], long_name: address[i].long_name });
+            }
+
         }
+
+        for (let index in dataClean) {
+            this.setValueState(dataClean[index])
+        }
+
+    }
+
+    setValueState(value) {
+        switch (value.type) {
+            case 'street_number':
+                this.setState({ ['num_ext']: value.long_name });
+                break
+            case 'route':
+                this.setState({ ['calle']: value.long_name });
+                break
+            case 'political':
+                this.setState({ ['colonia']: value.long_name });
+                break
+            case 'administrative_area_level_1':
+                this.setState({ ['estado']: value.long_name });
+                break
+            case 'locality':
+                this.setState({ ['ciudad']: value.long_name });
+                break
+            case 'country':
+                this.setState({ ['pais']: value.long_name });
+                break
+            case 'postal_code':
+                this.setState({ ['cp']: value.long_name });
+                break
+        }
+    }
+
+    handleChange(event) {
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
 
     }
 
@@ -93,8 +127,8 @@ class CreateProperty extends Component {
         const estado = this.state.estado;
         const pais = this.state.pais;
         const cp = this.state.cp;
-        const lat = "62.62626262";
-        const long = "-65.151511555";
+        const lat = this.state.lat;
+        const long = this.state.lng;
         const ref = this.state.ref;
         const wifi = this.state.wifi;
         const estufa = this.state.estufa;
@@ -165,9 +199,9 @@ class CreateProperty extends Component {
                                         <div>
                                             <input
                                                 {...getInputProps({
-                                                    placeholder: 'Search Places ...',
+                                                    placeholder: 'Buscar dirección ...',
                                                     className: 'location-search-input'
-                                                })}
+                                                }) }
                                             />
                                             <div className="autocomplete-dropdown-container">
                                                 {suggestions.map(suggestion => {
@@ -177,7 +211,7 @@ class CreateProperty extends Component {
                                                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                                         : { backgroundColor: '#ffffff', cursor: 'pointer' };
                                                     return (
-                                                        <div {...getSuggestionItemProps(suggestion, { className, style })}>
+                                                        <div {...getSuggestionItemProps(suggestion, { className, style }) }>
                                                             <span>{suggestion.description}</span>
                                                         </div>
                                                     )
