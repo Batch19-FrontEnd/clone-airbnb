@@ -82,6 +82,8 @@ class Login extends Component {
 
                 let token = localStorage.getItem('token');
                 console.log('token: ', token);
+                window.location.href = '/Profile';
+
 
             }).catch(function (error) {
                     console.log('error:', JSON.stringify(error.response.data.message));
