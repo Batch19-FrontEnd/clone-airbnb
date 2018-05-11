@@ -23,6 +23,11 @@ export default class Example extends React.Component {
             isOpen: !this.state.isOpen
         });
     }
+    logOut() {
+      console.log('vamos a salir@')
+      localStorage.removeItem('token');
+      window.location.href="/"
+    }
     render() {
         return (
             <div>
@@ -32,10 +37,7 @@ export default class Example extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink href="/components/">Acceder</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/components/">Registrar</NavLink>
+                                <NavLink onClick={this.logOut}>Salir</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
