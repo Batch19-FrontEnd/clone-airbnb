@@ -9,9 +9,6 @@ import './App.css';
 import Inicio from './components/Landing Page/Inicio';
 import Content from './components/Global/Content';
 import Nvar from './components/Nvar/Nvar';
-import Registro from './components/Registro/Registro';
-import Login from './components/login/Login';
-
 
 class App extends Component {
   constructor(props){
@@ -31,13 +28,10 @@ class App extends Component {
     if (!this.state.authenticated) {
       return (
         <div className="App Seccion">
-          <Nvar />
           <div className="container">
             <div className="p-5">
               <Inicio/>
             </div>
-              <Registro/>
-              <Login/>
           </div>
         </div>
       );
