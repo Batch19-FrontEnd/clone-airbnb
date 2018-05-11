@@ -32,7 +32,7 @@ class CreateProperty extends Component {
             beds: '',
             address: '',
             lat: '',
-            lng:''
+            lng: ''
 
         };
 
@@ -201,7 +201,7 @@ class CreateProperty extends Component {
                                                 {...getInputProps({
                                                     placeholder: 'Buscar dirección ...',
                                                     className: 'location-search-input'
-                                                }) }
+                                                })}
                                             />
                                             <div className="autocomplete-dropdown-container">
                                                 {suggestions.map(suggestion => {
@@ -211,7 +211,7 @@ class CreateProperty extends Component {
                                                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                                         : { backgroundColor: '#ffffff', cursor: 'pointer' };
                                                     return (
-                                                        <div {...getSuggestionItemProps(suggestion, { className, style }) }>
+                                                        <div {...getSuggestionItemProps(suggestion, { className, style })}>
                                                             <span>{suggestion.description}</span>
                                                         </div>
                                                     )
@@ -253,45 +253,49 @@ class CreateProperty extends Component {
                             <FormGroup>
                                 <Input type="text" name="ref" id="ref" placeholder="Referencias" value={this.state.ref} onChange={this.handleChange} required />
                             </FormGroup>
+                            <div className="estate">
+                                <FormGroup>
+                                    <Label for="">Servicios </Label>
+                                </FormGroup>
 
-                            <FormGroup>
-                                <Label for="">Servicios </Label>
-                            </FormGroup>
-
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="wifi" id="wifi" checked={this.state.wifi} onChange={this.handleChange} />
-                                    Wifi
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="wifi" id="wifi" checked={this.state.wifi} onChange={this.handleChange} />
+                                        Wifi
                                 </Label>
-                            </FormGroup>
+                                </FormGroup>
 
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="estufa" id="estufa" checked={this.state.estufa} onChange={this.handleChange} />
-                                    Estufa
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="estufa" id="estufa" checked={this.state.estufa} onChange={this.handleChange} />
+                                        Estufa
                             </Label>
-                            </FormGroup>
+                                </FormGroup>
 
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="parking" id="parking" checked={this.state.parking} onChange={this.handleChange} />
-                                    Estacionamiento
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="parking" id="parking" checked={this.state.parking} onChange={this.handleChange} />
+                                        Estacionamiento
                         </Label>
-                            </FormGroup>
+                                </FormGroup>
 
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="refri" id="refri" checked={this.state.refri} onChange={this.handleChange} />
-                                    Refrigerador
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="refri" id="refri" checked={this.state.refri} onChange={this.handleChange} />
+                                        Refrigerador
                     </Label>
-                            </FormGroup>
+                                </FormGroup>
 
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="tv" id="tv" checked={this.state.tv} onChange={this.handleChange} />
-                                    TV
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="tv" id="tv" checked={this.state.tv} onChange={this.handleChange} />
+                                        TV
                 </Label>
-                            </FormGroup>
+                                </FormGroup>
+
+
+
+                            </div>
 
 
                             <FormGroup>
@@ -302,8 +306,6 @@ class CreateProperty extends Component {
                             <FormGroup>
                                 <Input type="number" name="beds" id="beds" placeholder="Camas" value={this.state.beds} onChange={this.handleChange} required />
                             </FormGroup>
-
-
 
                             <Button color="danger" type="submit" className="col-12" >Crear</Button>
                         </Form>
