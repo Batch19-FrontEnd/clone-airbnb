@@ -82,7 +82,7 @@ class Registro extends Component {
                                     <Input type="password" name="confirmacionPassword" id="confirmacionPassword" placeholder="Vuelve a escribir tu contraseña" value={this.state.confirmacionPassword} onChange={this.handleChange} required />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required maxLength="10" minLength="10"/>
+                                    <Input type="text" name="phone_number" id="phone_number" placeholder="Número de teléfono" value={this.state.phone_number} onChange={this.handleChange} required maxLength="10" minLength="4"/>
                                 </FormGroup>
                                 <Button color="danger" type="submit" className="col-12" >Regístrate</Button>
                             </Form>
