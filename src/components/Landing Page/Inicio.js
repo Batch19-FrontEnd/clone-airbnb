@@ -56,7 +56,12 @@ class Inicio extends Component {
                             <Registro/>
                         </Modal>
                         <Modal isOpen={this.state.modalLogin} toggle={this.toggleLogin} className={this.props.className}>
-                            <Login/>
+                        <ModalHeader toggle={this.toggleNested}></ModalHeader>
+                            <ModalBody>
+                                <Login />
+                            </ModalBody>
+                            <ModalFooter>
+                            </ModalFooter>
                         </Modal>
                         <Col></Col>
                     </Row>

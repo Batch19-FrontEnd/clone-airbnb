@@ -11,6 +11,7 @@ class PropiedadesLanding extends Component {
         super(props)
         this.state = {
             propiedades:[]
+
         };
 
     }
@@ -60,6 +61,7 @@ class PropiedadesLanding extends Component {
 
                 {this.buildCards()}
             </Row>
+
         )
     }
 
