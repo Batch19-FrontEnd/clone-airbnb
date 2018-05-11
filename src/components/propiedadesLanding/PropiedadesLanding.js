@@ -3,6 +3,8 @@ import Axios from 'axios';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, CardGroup } from 'reactstrap';
 import './PropiedadesLanding.css';
 import StarRatingComponent from 'react-star-rating-component';
+import { Link } from 'react-router-dom'
+
 
 class PropiedadesLanding extends Component {
     constructor(props) {
@@ -13,7 +15,8 @@ class PropiedadesLanding extends Component {
             ciudad: props.ciudad === null ? "Ciudad no disponible" : props.ciudad,
             foto: props.foto === null ? "http://zazsupercentro.com/wp-content/uploads/2017/07/imagen-no-disponible.png" : props.foto,
             precio: props.precio === null ? "Precio no disponible" : props.precio,
-            rating: props.rating === null ? 0 : props.rating
+            rating: props.rating === null ? 0 : props.rating,
+            id: props.id === null ? 0 : props.id,
         };
 
     }
@@ -37,6 +40,9 @@ class PropiedadesLanding extends Component {
                             editing={false}
                             starCount={5}
                             value={this.state.rating} />
+                    </div>
+                    <div>
+                        <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
                     </div>
                 </CardBody>
             </Card>

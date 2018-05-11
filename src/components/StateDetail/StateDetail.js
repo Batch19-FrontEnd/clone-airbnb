@@ -21,6 +21,7 @@ class StateDetail extends Component {
 
   constructor(props) {
     super(props);
+    props.params;
     this.state = {
       detail: {},
       services: [],
@@ -37,7 +38,9 @@ class StateDetail extends Component {
 
 
   componentWillMount() {
-    let idEstate = 11; // valor hardcode
+    console.log('props: ', this.props.match.params.value);
+    
+    let idEstate = this.props.match.params.value; // valor hardcode
     axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/' + idEstate)
       .then(Response => {
         let detail = Response.data;

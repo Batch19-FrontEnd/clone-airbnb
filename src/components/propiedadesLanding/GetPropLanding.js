@@ -22,7 +22,7 @@ class GetPropLanding extends Component {
             .then(Response => {
                 let propied = Response.data
                 this.setState({ propied })
-                let listPropied = this.state.propied.map(element => <PropiedadesLanding nombre={element.estate_name} pais={element.Address.pais} ciudad={element.Address.ciudad} foto={element.photos} precio={element.price} rating={element.score} />)
+                let listPropied = this.state.propied.map(element => <PropiedadesLanding nombre={element.estate_name} id={element.id} pais={element.Address.pais} ciudad={element.Address.ciudad} foto={element.photos} precio={element.price} rating={element.score} />)
 
                 this.setState({ listPropied })
 
