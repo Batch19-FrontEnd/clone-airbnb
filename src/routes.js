@@ -24,7 +24,7 @@ const AppRoutes = () =>
             <Route path="/GetPropLanding" component={GetPropLanding}/>
             <Route path="/Evaluacion" component={Evaluacion}/>
             <Route path="/CreateProperty" component={CreateProperty}/>
-            <Route path="/stateDetail" component={StateDetail}/>
+            <Route path="/estateDetail" component={StateDetail}/>
             <Route path="/login" component={Login}/>
             <Route component={Page404}/>
         </Switch>
