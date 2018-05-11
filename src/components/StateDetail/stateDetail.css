@@ -2,3 +2,7 @@
 .detail {
 background-color: white;
 }
+.map {
+    height: '100vh';
+    width: '100%';
+}

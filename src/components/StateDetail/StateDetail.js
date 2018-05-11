@@ -10,7 +10,8 @@ import IoBonfire from 'react-icons/lib/io/bonfire';
 import MdLiveTv from 'react-icons/lib/md/live-tv';
 import IoAndroidCar from 'react-icons/lib/io/android-car';
 import IoWifi from 'react-icons/lib/io/wifi';
-
+import GoogleMapReact from 'google-map-react';
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 //import para  traer el componenet raiz de react
 
@@ -22,9 +23,15 @@ class StateDetail extends Component {
     this.state = {
       detail: {},
       services: [],
+      address:[],
       config: {
         headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-      }
+      },
+      center: {
+        lat: 19.45505851073454,
+        lng: -99.07577045376672
+      },
+      zoom: 15
     }
     //this.services = [];
   }
@@ -40,8 +47,12 @@ class StateDetail extends Component {
         });
         // console.log('detail:', this.state);
         let services = Response.data.Service;
+        let address = Response.data.Address;
         this.setState({
           services: services
+        });
+        this.setState({
+          address: address
         });
       });
 
@@ -135,7 +146,26 @@ class StateDetail extends Component {
             </Row>
           )}
         </Container>
+
+        <div className="map" style={{ height: '100vh', width: '100%' }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: 'AIzaSyCemtRYjj9VxgYotLHMVbZm9HqluRo2zHk',
+              language: 'es'
+            }}
+            defaultCenter={this.state.center}
+            defaultZoom={this.state.zoom}
+          >
+            <AnyReactComponent
+              lat={19.45505851073454}
+              lng={-99.07577045376672}
+              text={'mexico'}
+            />
+          </GoogleMapReact>
+        </div>
       </div>
+
+
     );
   }
 
