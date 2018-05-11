@@ -11,7 +11,8 @@ import MdLiveTv from 'react-icons/lib/md/live-tv';
 import IoAndroidCar from 'react-icons/lib/io/android-car';
 import IoWifi from 'react-icons/lib/io/wifi';
 import GoogleMapReact from 'google-map-react';
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+const AnyReactComponent = ({ text }) => <div>text</div>;
 
 //import para  traer el componenet raiz de react
 
@@ -23,37 +24,48 @@ class StateDetail extends Component {
     this.state = {
       detail: {},
       services: [],
-      address:[],
+      address: [],
       config: {
         headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
       },
-      center: {
-        lat: 19.45505851073454,
-        lng: -99.07577045376672
-      },
+      center: [],
       zoom: 15
     }
     //this.services = [];
+    
   }
 
 
   componentWillMount() {
-    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/7')
+    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/10')
       .then(Response => {
         let detail = Response.data;
-        console.log(detail.Service["id"])
+        console.log('************', detail.Address["lat"])
+
         this.setState({
           detail: detail
         });
         // console.log('detail:', this.state);
         let services = Response.data.Service;
         let address = Response.data.Address;
+        let center = {
+          data: {
+            lat: detail.Address["lat"],
+            lng: detail.Address["long"]
+          }
+        };
         this.setState({
           services: services
         });
         this.setState({
           address: address
         });
+        this.setState({
+          center: center.data
+        });
+
+
+
       });
 
   }
@@ -67,8 +79,8 @@ class StateDetail extends Component {
 
   render() {
     //Necesita regresar un objeto
-    console.log("Soy un render")
-    console.log(this.state.services)
+    console.log("Soy un render");
+    console.log('statesssss: ', this.state);
 
     return (
       <div className="detail">
@@ -146,23 +158,25 @@ class StateDetail extends Component {
             </Row>
           )}
         </Container>
+        {this.state.center.lat && (
+          <div className="map" style={{ height: '100vh', width: '100%' }}>
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: 'AIzaSyCemtRYjj9VxgYotLHMVbZm9HqluRo2zHk',
+                language: 'es'
+              }}
+              defaultCenter={this.state.center}
+              defaultZoom={this.state.zoom}
+            >
+              <AnyReactComponent
+                lat={this.state.address.lat}
+                lng={this.state.address.long}
+                text={'hector'}
+              />
+            </GoogleMapReact>
+          </div>
+        )}
 
-        <div className="map" style={{ height: '100vh', width: '100%' }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{
-              key: 'AIzaSyCemtRYjj9VxgYotLHMVbZm9HqluRo2zHk',
-              language: 'es'
-            }}
-            defaultCenter={this.state.center}
-            defaultZoom={this.state.zoom}
-          >
-            <AnyReactComponent
-              lat={19.45505851073454}
-              lng={-99.07577045376672}
-              text={'mexico'}
-            />
-          </GoogleMapReact>
-        </div>
       </div>
 
 
