@@ -12,7 +12,7 @@ import IoAndroidCar from 'react-icons/lib/io/android-car';
 import IoWifi from 'react-icons/lib/io/wifi';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>text</div>;
+const AnyReactComponent = ({ text }) => <div><img src={"https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/256/places.png"} /></div>;
 
 //import para  traer el componenet raiz de react
 
@@ -37,15 +37,13 @@ class StateDetail extends Component {
 
 
   componentWillMount() {
-    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/10')
+    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/11')
       .then(Response => {
         let detail = Response.data;
-        console.log('************', detail.Address["lat"])
 
         this.setState({
           detail: detail
         });
-        // console.log('detail:', this.state);
         let services = Response.data.Service;
         let address = Response.data.Address;
         let center = {
@@ -71,7 +69,6 @@ class StateDetail extends Component {
   }
 
   buildServices(data) {
-    // console.log('buildServices: ', data[0]);
 
   }
 
@@ -79,8 +76,6 @@ class StateDetail extends Component {
 
   render() {
     //Necesita regresar un objeto
-    console.log("Soy un render");
-    console.log('statesssss: ', this.state);
 
     return (
       <div className="detail">
@@ -90,6 +85,7 @@ class StateDetail extends Component {
               <h2>{this.state.detail.estate_name}</h2>
             </Col>
           </Row>
+          <br />
           <Row>
             <Col>
               <h4>{this.state.detail.description}</h4>
