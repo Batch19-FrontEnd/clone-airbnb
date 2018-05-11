@@ -52,7 +52,6 @@ class Registro extends Component {
             "password": password,
             "phone_number": phone_number
         }
-
         if (password !== confirmacionPassword) {
             alert('Contrasena incorrecta');
         } else {
@@ -101,7 +100,21 @@ class Registro extends Component {
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/signup', objeto)
             .then(Response => {
                 console.log(Response);
-                window.location.reload()
+                let user = { email: this.state.email, password: this.state.password }
+                Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/users/login', user)
+                    .then(function (Response) {
+                        console.log('Response*******:', );
+                        localStorage.setItem('token', Response.data.token);
+
+                        let token = localStorage.getItem('token');
+                        console.log('token: ', token);
+                        window.location.href = '/Profile';
+
+
+                    }).catch(function (error) {
+                            console.log('error:', JSON.stringify(error.response.data.message));
+                            // console.log(error.)
+                    });
             })
             .catch(Error => console.log(Error));
 
