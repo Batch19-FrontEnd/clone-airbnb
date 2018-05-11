@@ -37,7 +37,8 @@ class StateDetail extends Component {
 
 
   componentWillMount() {
-    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/11')
+    let idEstate = 11; // valor hardcode
+    axios.get('https://airbnb-cn-b19.herokuapp.com/api/v1/estates/' + idEstate)
       .then(Response => {
         let detail = Response.data;
 
