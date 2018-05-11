@@ -63,7 +63,7 @@ class Login extends Component {
                         <Label for="examplePassword">Password</Label>
                         <Input type="password" name="password" id="examplePassword" placeholder="Contraseña" value={this.state.password} onChange={this.handleChangePassword} required />
                     </FormGroup>
-                    <Button type="submit"> Iniciar sesión</Button>
+                    <Button type="submit" color="danger"> Iniciar sesión</Button>
 
                 </Form>
                 <p>¿No tienes un cuenta? Regístrate</p>
