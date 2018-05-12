@@ -82,7 +82,7 @@ class Login extends Component {
 
                 let token = localStorage.getItem('token');
                 console.log('token: ', token);
-                window.location.href = '/Profile';
+                window.location.href = '/';
 
 
             }).catch(function (error) {

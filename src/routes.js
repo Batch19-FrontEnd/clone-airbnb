@@ -13,6 +13,7 @@ import CreateProperty from './components/CreateProperty/CreateProperty';
 import Page404 from './components/Page404/Page404';
 import StateDetail from './components/StateDetail/StateDetail';
 import Login from './components/login/Login';
+import Propiedades from './components/propiedadesLanding/PropiedadesLanding';
 
 
 const AppRoutes = () =>
@@ -26,6 +27,7 @@ const AppRoutes = () =>
             <Route path="/CreateProperty" component={CreateProperty}/>
             <Route path="/estateDetail/:value" component={StateDetail}/>
             <Route path="/login" component={Login}/>
+            <Route path="/" component={Propiedades}/>
             <Route component={Page404}/>
         </Switch>
     </App>

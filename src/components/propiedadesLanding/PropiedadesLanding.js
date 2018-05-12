@@ -35,6 +35,7 @@ class PropiedadesLanding extends Component {
 
 
     buildCards() {
+        console.log(this.state.propiedades)
         return this.state.propiedades.map(
             (propiedad) => (
                 <Col md="3">
@@ -57,9 +58,9 @@ class PropiedadesLanding extends Component {
                                     value={this.state.rating} />
                             </div>
                             <div>
-                                {this.state.id && (
-                                    <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
-                                )}
+
+                                    <Link color="danger" to={'estateDetail/' + propiedad.id}>Detalles</Link>
+
                             </div>
                         </CardBody>
                     </Card>
