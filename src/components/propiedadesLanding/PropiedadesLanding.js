@@ -26,7 +26,7 @@ class PropiedadesLanding extends Component {
     }
 
     componentWillMount() {
-        Axios.get("http://airbnb-cn-b19.herokuapp.com/api/v1/estates/view").then((resp) => {
+        Axios.get("https://airbnb-cn-b19.herokuapp.com/api/v1/estates/view").then((resp) => {
             this.setState({ propiedades: resp.data })
         }).catch(() => {
         })
