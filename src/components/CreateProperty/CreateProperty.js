@@ -332,6 +332,7 @@ class CreateProperty extends Component {
         Axios.post('https://airbnb-cn-b19.herokuapp.com/api/v1/estates', objeto, config)
             .then(Response => {
                 console.log('Response:', Response);
+                window.location.href = '/GetPropLanding';
             })
             .catch(Error => console.log(Error));
 
