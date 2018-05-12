@@ -57,7 +57,9 @@ class PropiedadesLanding extends Component {
                                     value={this.state.rating} />
                             </div>
                             <div>
-                                <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
+                                {this.state.id && (
+                                    <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
+                                )}
                             </div>
                         </CardBody>
                     </Card>
