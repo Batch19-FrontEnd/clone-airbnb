@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, CardGroup } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Row } from 'reactstrap';
 import './PropiedadesLanding.css';
 import StarRatingComponent from 'react-star-rating-component';
 import { Link } from 'react-router-dom'
+
+
 
 
 class PropiedadesLanding extends Component {
@@ -17,35 +19,61 @@ class PropiedadesLanding extends Component {
             precio: props.precio === null ? "Precio no disponible" : props.precio,
             rating: props.rating === null ? 0 : props.rating,
             id: props.id === null ? 0 : props.id,
+            propiedades: []
+
         };
 
+    }
+
+    componentWillMount() {
+        Axios.get("http://airbnb-cn-b19.herokuapp.com/api/v1/estates/view").then((resp) => {
+            this.setState({ propiedades: resp.data })
+        }).catch(() => {
+        })
+
+    }
+
+
+    buildCards() {
+        return this.state.propiedades.map(
+            (propiedad) => (
+                <Col md="3">
+                    <Card style={{ marginTop: "10px" }} >
+                        <CardImg top width="100%" height="200" src={propiedad.photos !== null ? propiedad.photos[0] : ""
+                        } alt="Card image cap" />
+                        <CardBody>
+                            <div className="tituloCiudad">
+                                <CardSubtitle>{propiedad.Address.estado}</CardSubtitle>
+                                <CardSubtitle>·</CardSubtitle>
+                                <CardSubtitle>{propiedad.Address.pais}</CardSubtitle>
+                            </div>
+                            <CardTitle>{propiedad.estate_name}</CardTitle>
+                            <CardText>${propiedad.price} por noche</CardText>
+                            <div>
+                                <StarRatingComponent
+                                    name="rate2"
+                                    editing={false}
+                                    starCount={5}
+                                    value={this.state.rating} />
+                            </div>
+                            <div>
+                                <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Col>
+            )
+        )
     }
 
 
     render() {
         return (
-            <Card>
-                <CardImg top width="100%" src={this.state.foto} alt="Card image cap" />
-                <CardBody>
-                    <div className="tituloCiudad">
-                        <CardSubtitle>{this.state.ciudad}</CardSubtitle>
-                        <CardSubtitle>·</CardSubtitle>
-                        <CardSubtitle>{this.state.pais}</CardSubtitle>
-                    </div>
-                    <CardTitle>{this.state.name}</CardTitle>
-                    <CardText>${this.state.precio} por noche</CardText>
-                    <div>
-                        <StarRatingComponent
-                            name="rate2"
-                            editing={false}
-                            starCount={5}
-                            value={this.state.rating} />
-                    </div>
-                    <div>
-                        <Link color="danger" to={'estateDetail/' + this.state.id}>Detalles</Link>
-                    </div>
-                </CardBody>
-            </Card>
+            <Row>
+
+                {this.buildCards()}
+            </Row>
+
         )
     }
 

@@ -36,9 +36,7 @@ class GetPropLanding extends Component {
 
         return (
             <div>
-                <CardColumns>
                             {this.state.listPropied}
-                </CardColumns>
             </div>
         )
 

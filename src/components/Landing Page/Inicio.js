@@ -3,7 +3,7 @@ import './Estilos.css';
 import { Jumbotron, Button, Row, Col, Input, InputGroup, InputGroupAddon, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Registro from '../../components/Registro/Registro';
 import Login from '../../components/login/Login';
-
+import Propiedades from '../propiedadesLanding/PropiedadesLanding';
 
 class Inicio extends Component {
 
@@ -66,8 +66,11 @@ class Inicio extends Component {
                         <Col></Col>
                     </Row>
                 </Jumbotron>
-                <img className="img img-responsive" alt="LOGO" width="200px" height="100px" src="logo.png" />
-                <img className="img img-responsive" alt="LOGO" width="200px" height="100px" src="http://www.resetmx.reviews/wp-content/uploads/2017/09/default.png" />
+            
+                <Row>
+                    <h4>Nuestras Casas</h4>
+                    <Propiedades/>
+                </Row>
             </div>
         );
     }
